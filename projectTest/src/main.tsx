@@ -1,9 +1,9 @@
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import ProductTable from "./components/productTable.tsx"
+import FixedIncomeTable from './components/productTable'
 
 createRoot(document.getElementById('root')!).render(
   <div>
-    <ProductTable />
+    <FixedIncomeTable />
   </div>
 )
