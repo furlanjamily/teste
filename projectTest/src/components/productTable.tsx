@@ -17,10 +17,10 @@ const ProductTable: React.FC = () => {
   const [sortAscending, setSortAscending] = useState<boolean>(true);
 
   useEffect(() => {
+    // Fazendo a requisição para a API para obter os dados
     axios.get('https://6270328d6a36d4d62c16327c.mockapi.io/getFixedIncomeClassData')
       .then(response => {
         const { dailyEquityByPortfolioChartData } = response.data.data;
-        // Filtrar valores undefined antes de definir o estado
         const validData: InvestmentData[] = dailyEquityByPortfolioChartData.filter(
           (item: InvestmentData | undefined): item is InvestmentData => item !== undefined
         );
@@ -35,24 +35,23 @@ const ProductTable: React.FC = () => {
   const handleFilter = () => {
     let filtered = data;
 
+    // Filtrando por Id do Produto
     if (productIdFilter) {
-      filtered = filtered.filter(item => 
-        item.portfolioProductId.toString().includes(productIdFilter)
-      );
+      const productIdNumber = Number(productIdFilter);
+      if (!isNaN(productIdNumber)) {
+        filtered = filtered.filter(item => item.portfolioProductId === productIdNumber);
+      }
     }
 
+    // Filtrando por Nome do Produto
     if (productNameFilter) {
       filtered = filtered.filter(item =>
         item.productName.toLowerCase().includes(productNameFilter.toLowerCase())
       );
     }
 
-    // Filtra para garantir que portfolioProductId seja único
-    const uniqueFilteredData = Array.from(new Set(filtered.map(item => item.portfolioProductId)))
-      .map(id => filtered.find(item => item.portfolioProductId === id))
-      .filter((item): item is InvestmentData => item !== undefined); // Filtra undefined
-
-    setFilteredData(uniqueFilteredData);
+    console.log('Dados filtrados:', filtered);
+    setFilteredData(filtered);
   };
 
   const handleSortToggle = () => {
@@ -60,12 +59,12 @@ const ProductTable: React.FC = () => {
       return sortAscending ? a.value - b.value : b.value - a.value;
     });
     setFilteredData(sortedData);
-    setSortAscending(!sortAscending);
+    setSortAscending(!sortAscending); // Alterna a ordem de classificação
   };
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold text-red-950 mb-4">Tabela de Produtos de Investimento</h1>
+      <h1 className="text-2xl font-bold mb-4">Tabela de Produtos de Investimento</h1>
 
       <div className="flex mb-4 gap-4">
         <input 
