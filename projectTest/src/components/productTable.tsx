@@ -76,7 +76,7 @@ const FixedIncomeTable: React.FC = () => {
     setFilteredData(filtered);
   };
 
-  // Função para alternar a ordenação
+  // Função para alternar a ordenação 
   const toggleSort = () => {
     setIsAscending(!isAscending);
     const sortedData = [...filteredData].sort((a, b) => {
