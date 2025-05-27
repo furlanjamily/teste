@@ -1,5 +1,5 @@
 import FilteringField from './components/FilteringField.tsx';
-import TableProduct from './components/tableProduct.tsx';
+import TableProduct from './components/TableProduct.tsx';
 
 function App() {
   return (
