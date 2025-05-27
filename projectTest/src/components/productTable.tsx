@@ -10,7 +10,6 @@ function ProductTable() {
   const filterId = searchParams.get('id');
   const filterName = searchParams.get('name')?.toLowerCase();
   const order = searchParams.get('order') || 'asc';
-
   useEffect(() => {
     async function fetchProducts() {
       const result = await getProduct();
