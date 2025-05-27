@@ -16,7 +16,7 @@ interface DailyEquityByPortfolioChartData {
   value: number;
 }
 
-interface SnapshotByProduct {
+export interface SnapshotByProduct {
   due: {
     date: string;
     daysUntilExpiration: number;

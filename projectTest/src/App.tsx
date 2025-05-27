@@ -1,13 +1,13 @@
-// import FilteringField from "./components/FilteringField.tsx"
-import ProductTable from "./components/ProductTable.tsx"
+import FilteringField from './components/FilteringField.tsx';
+import ProductTable from './components/ProductTable.tsx';
 
 function App() {
   return (
     <div>
-      {/* <FilteringField /> */}
+      <FilteringField />
       <ProductTable />
-    </div >
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;

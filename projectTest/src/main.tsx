@@ -1,15 +1,13 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App.tsx';
+import './index.css'; // ou o arquivo onde você colocou os @tailwind
+import { BrowserRouter } from 'react-router-dom';
 
-const rootElement = document.getElementById('root');
-if (rootElement) {
-  createRoot(rootElement).render(
-    <StrictMode>
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <BrowserRouter>
       <App />
-    </StrictMode>,
-  );
-} else {
-  throw new Error("Root element not found");
-}
+    </BrowserRouter>
+  </React.StrictMode>
+);
