@@ -19,6 +19,7 @@ function ProductTable() {
     fetchProducts();
   }, []);
 
+
   const filteredAndSortedData = allProducts?.data.dailyEquityByPortfolioChartData
     ?.filter((item) => {
       const matchesId = filterId ? item.portfolioProductId.toString().includes(filterId) : true;
