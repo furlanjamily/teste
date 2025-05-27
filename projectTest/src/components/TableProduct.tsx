@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { ApiResponse } from '../type/product';
 import { getProduct } from '../api/getProduct';
 
-function ProductTable() {
+function TableProduct() {
   const [allProducts, setAllProducts] = useState<ApiResponse | undefined>();
   const [searchParams] = useSearchParams();
 
@@ -17,6 +17,7 @@ function ProductTable() {
     }
     fetchProducts();
   }, []);
+
 
 
   const filteredAndSortedData = allProducts?.data.dailyEquityByPortfolioChartData
@@ -59,4 +60,4 @@ function ProductTable() {
   );
 }
 
-export default ProductTable;
+export default TableProduct;
